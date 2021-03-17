@@ -1,0 +1,124 @@
+:root {
+  --leftBgColor: rgba(137, 156, 136, 0.5);
+  --leftBtnColor: salmon;
+  --rightBgColor: rgba(43, 43, 43, 0.7);
+  --rightBtnColor: rgb(140, 217, 240);
+  --hoverWidth: 75%;
+  --otherWidth: 25%;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #333;
+}
+h1 {
+  font-size: 3.5rem;
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translateX(-50%);
+  /*  white-space: nowrap; */
+}
+.btn {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%);
+  text-decoration: none;
+  color: white;
+  border: white solid 0.2rem;
+  font-size: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  width: 15rem;
+  border-radius: 20px;
+  box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.4),
+    inset 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.split {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  color: white;
+  top: 0px;
+}
+.split.left {
+  left: 0;
+  background: url('sea.jfif');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.split.right {
+  right: 0;
+  background: url('land.jfif');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.split.left .btn:hover {
+  background-color: var(--leftBtnColor);
+  border-color: var(--leftBtnColor);
+}
+.split.right .btn:hover {
+  background-color: var(--rightBtnColor);
+  border-color: var(--rightBtnColor);
+}
+
+.split.left::before {
+  content: '';
+  background-color: var(--leftBgColor);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.split.right::before {
+  content: '';
+  background-color: var(--rightBgColor);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.split.left,
+.split.right,
+.split.left::before,
+.split.right::before {
+  transition: all 1s ease;
+}
+.hoverLeft .left {
+  width: var(--hoverWidth);
+}
+
+.hoverLeft .right {
+  width: var(--otherWidth);
+}
+.hoverRight .right {
+  width: var(--hoverWidth);
+}
+.hoverRight .left {
+  width: var(--otherWidth);
+}
+@media (max-width: 800px) {
+  h1 {
+    font-size: 2rem;
+    top: 30%;
+  }
+  .btn {
+    width: 12rem;
+    padding: 1.2rem;
+  }
+}
